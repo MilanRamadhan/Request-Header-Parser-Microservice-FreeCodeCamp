@@ -5,6 +5,8 @@ const app = express();
 // Enable trust proxy to get correct IP if behind proxy
 app.set("trust proxy", true);
 
+app.use(express.static("public"));
+
 // Serve static files from public directory
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
