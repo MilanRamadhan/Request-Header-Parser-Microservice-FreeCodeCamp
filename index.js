@@ -13,14 +13,10 @@ app.get("/", (req, res) => {
 });
 
 app.get("/api/whoami", (req, res) => {
-  const ip = req.ip?.replace(/^::ffff:/, ""); // menghapus ::ffff: jika ada
-  const language = req.headers["accept-language"];
-  const software = req.headers["user-agent"];
-
   res.json({
-    ipaddress: ip,
-    language: language,
-    software: software,
+    ipaddress: req.ip,
+    language: req.headers["accept-language"],
+    software: req.headers["user-agent"],
   });
 });
 
